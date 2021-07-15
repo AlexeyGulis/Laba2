@@ -26,7 +26,7 @@ public class Test extends JFrame{
         setLocation((kit.getScreenSize().width - WIDTH)/2,
                 (kit.getScreenSize().height - HEIGHT)/2);
         ImageIcon img = new ImageIcon ("D:\\java\\Laba2\\src\\rfe\\bsu\\var4\\ds2.jpg");
-        
+
     }
 
     public static void main(String[] args) {
