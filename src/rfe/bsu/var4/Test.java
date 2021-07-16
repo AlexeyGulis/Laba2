@@ -154,6 +154,30 @@ public class Test extends JFrame{
 
 
         //Действие на кнопки
+        //Действие кнопки вычисления
+        buttonCalc.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                try{
+                    Double x = Double.parseDouble(textFieldX.getText());
+                    Double y = Double.parseDouble(textFieldY.getText());
+                    Double z = Double.parseDouble(textFieldZ.getText());
+                    if(formulaId==1){
+                        result = calculate1(x,y,z);
+                    }
+                    if(formulaId==2){
+                        result = calculate2(x,y,z);
+                    }
+                    textFieldResult.setText(result.toString());
+
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(Test.this,
+                            "Ошибка в формате числа с плавающей точкой",
+                            "Ошибочный формат переменных",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
         //Действие кнопки сброс значений
         buttonRes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
@@ -180,55 +204,31 @@ public class Test extends JFrame{
                     mem2=0.0;
                     textFieldMem2.setText(mem2.toString());
                 }
-
                 if(labelMemId==3){
                     mem3=0.0;
                     textFieldMem3.setText(mem3.toString());
                 }
             }
         });
-        //Действие кнопки вычисления
-        buttonCalc.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                try{
-                    Double x = Double.parseDouble(textFieldX.getText());
-                    Double y = Double.parseDouble(textFieldY.getText());
-                    Double z = Double.parseDouble(textFieldZ.getText());
-                    if(formulaId==1){
-                    result = calculate1(x,y,z);
-                    }
-                    if(formulaId==2){
-                        result = calculate2(x,y,z);
-                    }
-                    textFieldResult.setText(result.toString());
-
-                }catch(NumberFormatException ex){
-                    JOptionPane.showMessageDialog(Test.this,
-                            "Ошибка в формате числа с плавающей точкой",
-                            "Ошибочный формат переменных",
-                            JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        });
 
         //Действие кнопки добавления в память результатов
-        buttonCalc.addActionListener(new ActionListener() {
+        buttonMP.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
                 try{
                     Double x = Double.parseDouble(textFieldResult.getText());
                     if(labelMemId==1){
-                        mem1+=result;
-                        labelMem1.setText(mem1.toString());
+                        mem1+=x;
+                        textFieldMem1.setText(mem1.toString());
                         textFieldResult.setText(mem1.toString());
                     }
                     if(labelMemId==2){
-                        mem2+=result;
-                        labelMem2.setText(mem2.toString());
+                        mem2+=x;
+                        textFieldMem2.setText(mem2.toString());
                         textFieldResult.setText(mem2.toString());
                     }
                     if(labelMemId==3){
-                        mem3+=result;
-                        labelMem3.setText(mem3.toString());
+                        mem3+=x;
+                        textFieldMem3.setText(mem3.toString());
                         textFieldResult.setText(mem3.toString());
                     }
                 }catch(NumberFormatException ex){
